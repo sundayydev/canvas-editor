@@ -6,6 +6,9 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>canvas-editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,58 +21,52 @@
         <div class="menu-item__redo">
           <i></i>
         </div>
-        <div class="menu-item__painter" title="格式刷(双击可连续使用)">
+        <div class="menu-item__painter" title="Sao chép định dạng (Nhấp đôi để dùng liên tục)">
           <i></i>
         </div>
-        <div class="menu-item__format" title="清除格式">
+        <div class="menu-item__format" title="Xóa định dạng">
           <i></i>
         </div>
       </div>
       <div class="menu-divider"></div>
       <div class="menu-item">
         <div class="menu-item__font">
-          <span class="select" title="字体">微软雅黑</span>
+          <span class="select" title="Phông chữ">Nunito Sans</span>
           <div class="options">
             <ul>
-              <li data-family="Microsoft YaHei" style="font-family:'Microsoft YaHei';">微软雅黑</li>
-              <li data-family="华文宋体" style="font-family:'华文宋体';">华文宋体</li>
-              <li data-family="华文黑体" style="font-family:'华文黑体';">华文黑体</li>
-              <li data-family="华文仿宋" style="font-family:'华文仿宋';">华文仿宋</li>
-              <li data-family="华文楷体" style="font-family:'华文楷体';">华文楷体</li>
-              <li data-family="华文琥珀" style="font-family:'华文琥珀';">华文琥珀</li>
-              <li data-family="华文楷体" style="font-family:'华文楷体';">华文楷体</li>
-              <li data-family="华文隶书" style="font-family:'华文隶书';">华文隶书</li>
-              <li data-family="华文新魏" style="font-family:'华文新魏';">华文新魏</li>
-              <li data-family="华文行楷" style="font-family:'华文行楷';">华文行楷</li>
-              <li data-family="华文中宋" style="font-family:'华文中宋';">华文中宋</li>
-              <li data-family="华文彩云" style="font-family:'华文彩云';">华文彩云</li>
+              <li data-family="Nunito Sans" style="font-family:'Nunito Sans';">Nunito Sans</li>
               <li data-family="Arial" style="font-family:'Arial';">Arial</li>
               <li data-family="Segoe UI" style="font-family:'Segoe UI';">Segoe UI</li>
+              <li data-family="Microsoft YaHei" style="font-family:'Microsoft YaHei';">Microsoft YaHei</li>
+              <li data-family="Times New Roman" style="font-family:'Times New Roman';">Times New Roman</li>
+              <li data-family="Courier New" style="font-family:'Courier New';">Courier New</li>
+              <li data-family="Georgia" style="font-family:'Georgia';">Georgia</li>
+              <li data-family="Verdana" style="font-family:'Verdana';">Verdana</li>
               <li data-family="Ink Free" style="font-family:'Ink Free';">Ink Free</li>
               <li data-family="Fantasy" style="font-family:'Fantasy';">Fantasy</li>
             </ul>
           </div>
         </div>
         <div class="menu-item__size">
-          <span class="select" title="字体">小四</span>
+          <span class="select" title="Cỡ chữ">16</span>
           <div class="options">
             <ul>
-              <li data-size="56">初号</li>
-              <li data-size="48">小初</li>
-              <li data-size="34">一号</li>
-              <li data-size="32">小一</li>
-              <li data-size="29">二号</li>
-              <li data-size="24">小二</li>
-              <li data-size="21">三号</li>
-              <li data-size="20">小三</li>
-              <li data-size="18">四号</li>
-              <li data-size="16">小四</li>
-              <li data-size="14">五号</li>
-              <li data-size="12">小五</li>
-              <li data-size="10">六号</li>
-              <li data-size="8">小六</li>
-              <li data-size="7">七号</li>
-              <li data-size="6">八号</li>
+              <li data-size="56">Cỡ 56 (Cỡ lớn)</li>
+              <li data-size="48">Cỡ 48</li>
+              <li data-size="34">Cỡ 34</li>
+              <li data-size="32">Cỡ 32</li>
+              <li data-size="29">Cỡ 29</li>
+              <li data-size="24">Cỡ 24</li>
+              <li data-size="21">Cỡ 21</li>
+              <li data-size="20">Cỡ 20</li>
+              <li data-size="18">Cỡ 18</li>
+              <li data-size="16">Cỡ 16 (Chuẩn)</li>
+              <li data-size="14">Cỡ 14</li>
+              <li data-size="12">Cỡ 12</li>
+              <li data-size="10">Cỡ 10</li>
+              <li data-size="8">Cỡ 8</li>
+              <li data-size="7">Cỡ 7</li>
+              <li data-size="6">Cỡ 6</li>
             </ul>
           </div>
         </div>
@@ -108,7 +105,7 @@
             </ul>
           </div>
         </div>
-        <div class="menu-item__strikeout" title="删除线(Ctrl+Shift+X)">
+        <div class="menu-item__strikeout" title="Gạch giữa (Ctrl+Shift+X)">
           <i></i>
         </div>
         <div class="menu-item__superscript">
@@ -117,12 +114,12 @@
         <div class="menu-item__subscript">
           <i></i>
         </div>
-        <div class="menu-item__color" title="字体颜色">
+        <div class="menu-item__color" title="Màu chữ">
           <i></i>
           <span></span>
           <input type="color" id="color" />
         </div>
-        <div class="menu-item__highlight" title="高亮">
+        <div class="menu-item__highlight" title="Màu nền chữ">
           <i></i>
           <span></span>
           <input type="color" id="highlight">
@@ -132,16 +129,16 @@
       <div class="menu-item">
         <div class="menu-item__title">
           <i></i>
-          <span class="select" title="切换标题">正文</span>
+          <span class="select" title="Định dạng tiêu đề">Văn bản thường</span>
           <div class="options">
             <ul>
-              <li style="font-size:16px;">正文</li>
-              <li data-level="first" style="font-size:26px;">标题1</li>
-              <li data-level="second" style="font-size:24px;">标题2</li>
-              <li data-level="third" style="font-size:22px;">标题3</li>
-              <li data-level="fourth" style="font-size:20px;">标题4</li>
-              <li data-level="fifth" style="font-size:18px;">标题5</li>
-              <li data-level="sixth" style="font-size:16px;">标题6</li>
+              <li style="font-size:16px;">Văn bản thường</li>
+              <li data-level="first" style="font-size:26px;">Tiêu đề 1</li>
+              <li data-level="second" style="font-size:24px;">Tiêu đề 2</li>
+              <li data-level="third" style="font-size:22px;">Tiêu đề 3</li>
+              <li data-level="fourth" style="font-size:20px;">Tiêu đề 4</li>
+              <li data-level="fifth" style="font-size:18px;">Tiêu đề 5</li>
+              <li data-level="sixth" style="font-size:16px;">Tiêu đề 6</li>
             </ul>
           </div>
         </div>
@@ -161,7 +158,7 @@
           <i></i>
         </div>
         <div class="menu-item__row-margin">
-          <i title="行间距"></i>
+          <i title="Khoảng cách dòng"></i>
           <div class="options">
             <ul>
               <li data-rowmargin='1'>1</li>
@@ -179,34 +176,34 @@
           <div class="options">
             <ul>
               <li>
-                <label>取消列表</label>
+                <label>Hủy danh sách</label>
               </li>
               <li data-list-type="ol" data-list-style='decimal'>
-                <label>有序列表：</label>
+                <label>Danh sách số:</label>
                 <ol>
                   <li>________</li>
                 </ol>
               </li>
               <li data-list-type="ul" data-list-style='checkbox'>
-                <label>复选框列表：</label>
+                <label>Danh sách ô chọn:</label>
                 <ul style="list-style-type: '☑️ ';">
                   <li>________</li>
                 </ul>
               </li>
               <li data-list-type="ul" data-list-style='disc'>
-                <label>实心圆点列表：</label>
+                <label>Danh sách chấm tròn:</label>
                 <ul style="list-style-type: disc;">
                   <li>________</li>
                 </ul>
               </li>
               <li data-list-type="ul" data-list-style='circle'>
-                <label>空心圆点列表：</label>
+                <label>Danh sách rỗng:</label>
                 <ul style="list-style-type: circle;">
                   <li>________</li>
                 </ul>
               </li>
               <li data-list-type="ul" data-list-style='square'>
-                <label>空心方块列表：</label>
+                <label>Danh sách ô vuông:</label>
                 <ul style="list-style-type: '☐ ';">
                   <li>________</li>
                 </ul>
@@ -218,25 +215,25 @@
       <div class="menu-divider"></div>
       <div class="menu-item">
         <div class="menu-item__table">
-          <i title="表格"></i>
+          <i title="Chèn bảng"></i>
         </div>
         <div class="menu-item__table__collapse">
           <div class="table-close">×</div>
           <div class="table-title">
-            <span class="table-select">插入</span>
-            <span>表格</span>
+            <span class="table-select">Chèn</span>
+            <span>bảng</span>
           </div>
           <div class="table-panel"></div>
         </div>
         <div class="menu-item__image">
-          <i title="图片"></i>
+          <i title="Chèn hình ảnh"></i>
           <input type="file" id="image" accept=".png, .jpg, .jpeg, .svg, .gif">
         </div>
         <div class="menu-item__hyperlink">
-          <i title="超链接"></i>
+          <i title="Liên kết"></i>
         </div>
         <div class="menu-item__separator">
-          <i title="分割线"></i>
+          <i title="Đường phân cách"></i>
           <div class="options">
             <ul>
               <li data-separator='0,0'>
@@ -261,44 +258,44 @@
           </div>
         </div>
         <div class="menu-item__watermark">
-          <i title="水印(添加、删除)"></i>
+          <i title="Hình mờ / Watermark"></i>
           <div class="options">
             <ul>
-              <li data-menu="add">添加水印</li>
-              <li data-menu="delete">删除水印</li>
+              <li data-menu="add">Thêm hình mờ</li>
+              <li data-menu="delete">Xóa hình mờ</li>
             </ul>
           </div>
         </div>
-        <div class="menu-item__codeblock" title="代码块">
+        <div class="menu-item__codeblock" title="Khối mã nguồn">
           <i></i>
         </div>
-        <div class="menu-item__page-break" title="分页符">
+        <div class="menu-item__page-break" title="Ngắt trang">
           <i></i>
         </div>
         <div class="menu-item__control">
-          <i title="控件"></i>
+          <i title="Điều khiển"></i>
           <div class="options">
             <ul>
-              <li data-control='text'>文本</li>
-              <li data-control="number">数值</li>
-              <li data-control="select">列举</li>
-              <li data-control="date">日期</li>
-              <li data-control="checkbox">复选框</li>
-              <li data-control="radio">单选框</li>
+              <li data-control='text'>Văn bản</li>
+              <li data-control="number">Số</li>
+              <li data-control="select">Danh sách chọn</li>
+              <li data-control="date">Ngày tháng</li>
+              <li data-control="checkbox">Hộp chọn</li>
+              <li data-control="radio">Nút chọn</li>
             </ul>
           </div>
         </div>
-        <div class="menu-item__checkbox" title="复选框">
+        <div class="menu-item__checkbox" title="Hộp chọn">
           <i></i>
         </div>
-        <div class="menu-item__radio" title="单选框">
+        <div class="menu-item__radio" title="Nút chọn">
           <i></i>
         </div>
-        <div class="menu-item__latex" title="LateX">
+        <div class="menu-item__latex" title="Công thức LaTeX">
           <i></i>
         </div>
         <div class="menu-item__date">
-          <i title="日期"></i>
+          <i title="Ngày tháng"></i>
           <div class="options">
             <ul>
               <li data-format="yyyy-MM-dd"></li>
@@ -306,7 +303,7 @@
             </ul>
           </div>
         </div>
-        <div class="menu-item__block" title="内容块">
+        <div class="menu-item__block" title="Khối nội dung">
           <i></i>
         </div>
       </div>
@@ -317,7 +314,7 @@
         </div>
         <div class="menu-item__search__collapse" data-menu="search">
           <div class="menu-item__search__collapse__search">
-            <input type="text" />
+            <input type="text" placeholder="Tìm kiếm..." />
             <label class="search-result"></label>
             <div class="arrow-left">
               <i></i>
@@ -328,21 +325,21 @@
             <span>×</span>
           </div>
           <div class="menu-item__search__collapse__replace">
-            <input type="text">
-            <button>替换</button>
+            <input type="text" placeholder="Thay thế bằng..." />
+            <button>Thay thế</button>
           </div>
           <div class="menu-item__search__collapse__option">
             <div class="search-option-item">
               <input type="checkbox" id="option-reg" checked />
-              <label for="option-reg">正则</label>
+              <label for="option-reg">Regex</label>
             </div>
             <div class="search-option-item">
               <input type="checkbox" id="option-case" checked />
-              <label for="option-case">忽略大小写</label>
+              <label for="option-case">Bỏ qua hoa/thường</label>
             </div>
             <div class="search-option-item">
               <input type="checkbox" id="option-selection" />
-              <label for="option-selection">选定内容内查找</label>
+              <label for="option-selection">Tìm trong lựa chọn</label>
             </div>
           </div>
         </div>
@@ -353,7 +350,7 @@
     </div>
     <div class="catalog" editor-component="catalog">
       <div class="catalog__header">
-        <span>目录</span>
+        <span>Mục lục</span>
         <div class="catalog__header__close">
           <i></i>
         </div>
@@ -364,94 +361,94 @@
     <div class="comment" editor-component="comment"></div>
     <div class="footer" editor-component="footer">
       <div>
-        <div class="catalog-mode" title="目录">
+        <div class="catalog-mode" title="Mục lục">
           <i></i>
         </div>
         <div class="page-mode">
-          <i title="页面模式(分页、连页)"></i>
+          <i title="Chế độ trang (Ngắt trang, Cuộn liên tục)"></i>
           <div class="options">
             <ul>
-              <li data-page-mode="paging" class="active">分页</li>
-              <li data-page-mode="continuity">连页</li>
+              <li data-page-mode="paging" class="active">Từng trang</li>
+              <li data-page-mode="continuity">Cuộn liên tục</li>
             </ul>
           </div>
         </div>
-        <span>可见页码：<span class="page-no-list">1</span></span>
-        <span>页面：<span class="page-no">1</span>/<span class="page-size">1</span></span>
-        <span>字数：<span class="word-count">0</span></span>
-        <span>行：<span class="row-no">0</span></span>
-        <span>列：<span class="col-no">0</span></span>
+        <span>Trang hiển thị: <span class="page-no-list">1</span></span>
+        <span>Trang: <span class="page-no">1</span>/<span class="page-size">1</span></span>
+        <span>Số từ: <span class="word-count">0</span></span>
+        <span>Hàng: <span class="row-no">0</span></span>
+        <span>Cột: <span class="col-no">0</span></span>
       </div>
-      <div class="editor-mode" title="编辑模式(编辑、清洁、只读、表单、设计、涂鸦、留痕)">
-        <span class="text">编辑模式</span>
+      <div class="editor-mode" title="Chế độ biên tập (Chỉnh sửa, Xem sạch, Chỉ đọc, Mẫu biểu, Thiết kế, Vẽ tự do, Ghi vết)">
+        <span class="text">Chế độ chỉnh sửa</span>
         <ul class="options">
-          <li data-mode="edit" class="active">编辑模式</li>
-          <li data-mode="clean">清洁模式</li>
-          <li data-mode="readonly">只读模式</li>
-          <li data-mode="form">表单模式</li>
-          <li data-mode="print">打印模式</li>
-          <li data-mode="design">设计模式</li>
-          <li data-mode="graffiti">涂鸦模式</li>
+          <li data-mode="edit" class="active">Chế độ chỉnh sửa</li>
+          <li data-mode="clean">Chế độ xem sạch</li>
+          <li data-mode="readonly">Chế độ chỉ đọc</li>
+          <li data-mode="form">Chế độ biểu mẫu</li>
+          <li data-mode="print">Chế độ in ấn</li>
+          <li data-mode="design">Chế độ thiết kế</li>
+          <li data-mode="graffiti">Chế độ vẽ tự do</li>
           <li data-mode="trace" class="trace-mode-item">
-            <span class="trace-mode-label">留痕模式</span>
-            <label class="trace-toggle" title="勾选后，新增/删除将作为留痕记录；留痕查看模式下不可修改">
+            <span class="trace-mode-label">Chế độ ghi vết</span>
+            <label class="trace-toggle" title="Khi bật, mọi thay đổi thêm/xóa sẽ được ghi lại làm lịch sử vết">
               <input type="checkbox" class="trace-toggle__input" />
-              <span>记录</span>
+              <span>Ghi vết</span>
             </label>
           </li>
         </ul>
       </div>
       <div>
-        <div class="page-scale-minus" title="缩小(Ctrl+-)">
+        <div class="page-scale-minus" title="Thu nhỏ (Ctrl+-)">
           <i></i>
         </div>
-        <span class="page-scale-percentage" title="显示比例(点击可复原Ctrl+0)">100%</span>
-        <div class="page-scale-add" title="放大(Ctrl+=)">
+        <span class="page-scale-percentage" title="Tỷ lệ hiển thị (Nhấp để khôi phục 100% Ctrl+0)">100%</span>
+        <div class="page-scale-add" title="Phóng to (Ctrl+=)">
           <i></i>
         </div>
         <div class="paper-size">
-          <i title="纸张类型"></i>
+          <i title="Kích thước giấy"></i>
           <div class="options">
             <ul>
               <li data-paper-size="794*1123" class="active">A4</li>
               <li data-paper-size="1593*2251">A2</li>
               <li data-paper-size="1125*1593">A3</li>
               <li data-paper-size="565*796">A5</li>
-              <li data-paper-size="412*488">5号信封</li>
-              <li data-paper-size="450*866">6号信封</li>
-              <li data-paper-size="609*862">7号信封</li>
-              <li data-paper-size="862*1221">9号信封</li>
-              <li data-paper-size="813*1266">法律用纸</li>
-              <li data-paper-size="813*1054">信纸</li>
+              <li data-paper-size="412*488">Phong bì số 5</li>
+              <li data-paper-size="450*866">Phong bì số 6</li>
+              <li data-paper-size="609*862">Phong bì số 7</li>
+              <li data-paper-size="862*1221">Phong bì số 9</li>
+              <li data-paper-size="813*1266">Giấy pháp lý (Legal)</li>
+              <li data-paper-size="813*1054">Khổ thư (Letter)</li>
             </ul>
           </div>
         </div>
         <div class="paper-direction">
-          <i title="纸张方向"></i>
+          <i title="Hướng giấy"></i>
           <div class="options">
             <ul>
-              <li data-paper-direction="vertical" class="active">纵向</li>
-              <li data-paper-direction="horizontal">横向</li>
-              <li class="option-caption">指定页面</li>
-              <li data-section-direction="horizontal">本节横向</li>
-              <li data-section-direction="vertical">本节纵向</li>
-              <li data-section-direction="inherit">跟随全局</li>
+              <li data-paper-direction="vertical" class="active">Dọc</li>
+              <li data-paper-direction="horizontal">Ngang</li>
+              <li class="option-caption">Trang chỉ định</li>
+              <li data-section-direction="horizontal">Phần này nằm ngang</li>
+              <li data-section-direction="vertical">Phần này nằm dọc</li>
+              <li data-section-direction="inherit">Theo mặc định chung</li>
             </ul>
           </div>
         </div>
-        <div class="paper-margin" title="页边距">
+        <div class="paper-margin" title="Lề trang">
           <i></i>
         </div>
-        <div class="column-config" title="分栏">
+        <div class="column-config" title="Chia cột">
           <i></i>
         </div>
-        <div class="ruler-toggle" title="标尺">
+        <div class="ruler-toggle" title="Thước đo">
           <i></i>
         </div>
-        <div class="fullscreen" title="全屏显示">
+        <div class="fullscreen" title="Toàn màn hình">
           <i></i>
         </div>
-        <div class="editor-option" title="编辑器设置">
+        <div class="editor-option" title="Cài đặt trình soạn thảo">
           <i></i>
         </div>
       </div>

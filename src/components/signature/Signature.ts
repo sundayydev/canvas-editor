@@ -81,7 +81,7 @@ export class Signature {
     titleContainer.classList.add('signature-title')
     // 标题&关闭按钮
     const titleSpan = document.createElement('span')
-    titleSpan.append(document.createTextNode('插入签名'))
+    titleSpan.append(document.createTextNode('Chèn chữ ký'))
     const titleClose = document.createElement('i')
     titleClose.onclick = () => {
       if (onClose) {
@@ -100,7 +100,7 @@ export class Signature {
     undoContainer.classList.add('signature-operation__undo')
     const undoIcon = document.createElement('i')
     const undoLabel = document.createElement('span')
-    undoLabel.innerText = '撤销'
+    undoLabel.innerText = 'Hoàn tác'
     undoContainer.append(undoIcon)
     undoContainer.append(undoLabel)
     operationContainer.append(undoContainer)
@@ -109,7 +109,7 @@ export class Signature {
     trashContainer.classList.add('signature-operation__trash')
     const trashIcon = document.createElement('i')
     const trashLabel = document.createElement('span')
-    trashLabel.innerText = '清空'
+    trashLabel.innerText = 'Xóa sạch'
     trashContainer.append(trashIcon)
     trashContainer.append(trashLabel)
     operationContainer.append(trashContainer)
@@ -130,7 +130,7 @@ export class Signature {
     // 取消按钮
     const cancelBtn = document.createElement('button')
     cancelBtn.classList.add('signature-menu__cancel')
-    cancelBtn.append(document.createTextNode('取消'))
+    cancelBtn.append(document.createTextNode('Hủy'))
     cancelBtn.type = 'button'
     cancelBtn.onclick = () => {
       if (onCancel) {
@@ -141,7 +141,7 @@ export class Signature {
     menuContainer.append(cancelBtn)
     // 确认按钮
     const confirmBtn = document.createElement('button')
-    confirmBtn.append(document.createTextNode('确定'))
+    confirmBtn.append(document.createTextNode('Xác nhận'))
     confirmBtn.type = 'submit'
     confirmBtn.onclick = () => {
       if (onConfirm) {

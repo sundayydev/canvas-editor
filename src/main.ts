@@ -31,19 +31,19 @@ window.onload = function () {
   const isApple =
     typeof navigator !== 'undefined' && /Mac OS X/.test(navigator.userAgent)
 
-  // 1. 初始化编辑器
+  // 1. Khởi tạo trình soạn thảo
   const container = document.querySelector<HTMLDivElement>('.editor')!
   const instance = new Editor(
     container,
     {
       header: [
         {
-          value: '第一人民医院',
+          value: 'BỆNH VIỆN ĐA KHOA VĂN LANG',
           size: 32,
           rowFlex: RowFlex.CENTER
         },
         {
-          value: '\n门诊病历',
+          value: '\nBỆNH ÁN NGOẠI TRÙ',
           size: 18,
           rowFlex: RowFlex.CENTER
         },
@@ -62,13 +62,13 @@ window.onload = function () {
     },
     options
   )
-  console.log('实例: ', instance)
-  // cypress使用
+  console.log('Instance: ', instance)
+  // dùng cho cypress
   Reflect.set(window, 'editor', instance)
-  // canvas-editor-devtools使用
+  // dùng cho canvas-editor-devtools
   Reflect.set(window, '__CANVAS_EDITOR_INSTANCE__', instance)
 
-  // 菜单弹窗销毁
+  // Hủy popup menu
   window.addEventListener(
     'click',
     evt => {
@@ -81,16 +81,16 @@ window.onload = function () {
     }
   )
 
-  // 2. | 撤销 | 重做 | 格式刷 | 清除格式 |
+  // 2. | Hoàn tác | Làm lại | Cọ định dạng | Xóa định dạng |
   const undoDom = document.querySelector<HTMLDivElement>('.menu-item__undo')!
-  undoDom.title = `撤销(${isApple ? '⌘' : 'Ctrl'}+Z)`
+  undoDom.title = `Hoàn tác(${isApple ? '⌘' : 'Ctrl'}+Z)`
   undoDom.onclick = function () {
     console.log('undo')
     instance.command.executeUndo()
   }
 
   const redoDom = document.querySelector<HTMLDivElement>('.menu-item__redo')!
-  redoDom.title = `重做(${isApple ? '⌘' : 'Ctrl'}+Y)`
+  redoDom.title = `Làm lại(${isApple ? '⌘' : 'Ctrl'}+Y)`
   redoDom.onclick = function () {
     console.log('redo')
     instance.command.executeRedo()
@@ -132,7 +132,7 @@ window.onload = function () {
       instance.command.executeFormat()
     }
 
-  // 3. | 字体 | 字体变大 | 字体变小 | 加粗 | 斜体 | 下划线 | 删除线 | 上标 | 下标 | 字体颜色 | 背景色 |
+  // 3. | Font chữ | Tăng cỡ chữ | Giảm cỡ chữ | In đậm | In nghiêng | Gạch chân | Gạch giữa | Chỉ số trên | Chỉ số dưới | Màu chữ | Màu nền |
   const fontDom = document.querySelector<HTMLDivElement>('.menu-item__font')!
   const fontSelectDom = fontDom.querySelector<HTMLDivElement>('.select')!
   const fontOptionDom = fontDom.querySelector<HTMLDivElement>('.options')!
@@ -148,7 +148,7 @@ window.onload = function () {
   const sizeSetDom = document.querySelector<HTMLDivElement>('.menu-item__size')!
   const sizeSelectDom = sizeSetDom.querySelector<HTMLDivElement>('.select')!
   const sizeOptionDom = sizeSetDom.querySelector<HTMLDivElement>('.options')!
-  sizeSetDom.title = `设置字号`
+  sizeSetDom.title = `Cài đặt cỡ chữ`
   sizeSetDom.onclick = function () {
     console.log('size')
     sizeOptionDom.classList.toggle('visible')
@@ -161,7 +161,7 @@ window.onload = function () {
   const sizeAddDom = document.querySelector<HTMLDivElement>(
     '.menu-item__size-add'
   )!
-  sizeAddDom.title = `增大字号(${isApple ? '⌘' : 'Ctrl'}+[)`
+  sizeAddDom.title = `Tăng cỡ chữ (${isApple ? '⌘' : 'Ctrl'}+[)`
   sizeAddDom.onclick = function () {
     console.log('size-add')
     instance.command.executeSizeAdd()
@@ -170,14 +170,14 @@ window.onload = function () {
   const sizeMinusDom = document.querySelector<HTMLDivElement>(
     '.menu-item__size-minus'
   )!
-  sizeMinusDom.title = `减小字号(${isApple ? '⌘' : 'Ctrl'}+])`
+  sizeMinusDom.title = `Giảm cỡ chữ (${isApple ? '⌘' : 'Ctrl'}+])`
   sizeMinusDom.onclick = function () {
     console.log('size-minus')
     instance.command.executeSizeMinus()
   }
 
   const boldDom = document.querySelector<HTMLDivElement>('.menu-item__bold')!
-  boldDom.title = `加粗(${isApple ? '⌘' : 'Ctrl'}+B)`
+  boldDom.title = `In đậm (${isApple ? '⌘' : 'Ctrl'}+B)`
   boldDom.onclick = function () {
     console.log('bold')
     instance.command.executeBold()
@@ -185,7 +185,7 @@ window.onload = function () {
 
   const italicDom =
     document.querySelector<HTMLDivElement>('.menu-item__italic')!
-  italicDom.title = `斜体(${isApple ? '⌘' : 'Ctrl'}+I)`
+  italicDom.title = `In nghiêng (${isApple ? '⌘' : 'Ctrl'}+I)`
   italicDom.onclick = function () {
     console.log('italic')
     instance.command.executeItalic()
@@ -194,7 +194,7 @@ window.onload = function () {
   const underlineDom = document.querySelector<HTMLDivElement>(
     '.menu-item__underline'
   )!
-  underlineDom.title = `下划线(${isApple ? '⌘' : 'Ctrl'}+U)`
+  underlineDom.title = `Gạch chân (${isApple ? '⌘' : 'Ctrl'}+U)`
   const underlineOptionDom =
     underlineDom.querySelector<HTMLDivElement>('.options')!
   underlineDom.querySelector<HTMLSpanElement>('.select')!.onclick =
@@ -220,6 +220,7 @@ window.onload = function () {
   const strikeoutDom = document.querySelector<HTMLDivElement>(
     '.menu-item__strikeout'
   )!
+  strikeoutDom.title = `Gạch giữa (${isApple ? '⌘' : 'Ctrl'}+Shift+X)`
   strikeoutDom.onclick = function () {
     console.log('strikeout')
     instance.command.executeStrikeout()
@@ -228,7 +229,7 @@ window.onload = function () {
   const superscriptDom = document.querySelector<HTMLDivElement>(
     '.menu-item__superscript'
   )!
-  superscriptDom.title = `上标(${isApple ? '⌘' : 'Ctrl'}+Shift+,)`
+  superscriptDom.title = `Chỉ số trên (${isApple ? '⌘' : 'Ctrl'}+Shift+,)`
   superscriptDom.onclick = function () {
     console.log('superscript')
     instance.command.executeSuperscript()
@@ -237,7 +238,7 @@ window.onload = function () {
   const subscriptDom = document.querySelector<HTMLDivElement>(
     '.menu-item__subscript'
   )!
-  subscriptDom.title = `下标(${isApple ? '⌘' : 'Ctrl'}+Shift+.)`
+  subscriptDom.title = `Chỉ số dưới (${isApple ? '⌘' : 'Ctrl'}+Shift+.)`
   subscriptDom.onclick = function () {
     console.log('subscript')
     instance.command.executeSubscript()
@@ -286,7 +287,7 @@ window.onload = function () {
   }
 
   const leftDom = document.querySelector<HTMLDivElement>('.menu-item__left')!
-  leftDom.title = `左对齐(${isApple ? '⌘' : 'Ctrl'}+L)`
+  leftDom.title = `Căn trái (${isApple ? '⌘' : 'Ctrl'}+L)`
   leftDom.onclick = function () {
     console.log('left')
     instance.command.executeRowFlex(RowFlex.LEFT)
@@ -294,14 +295,14 @@ window.onload = function () {
 
   const centerDom =
     document.querySelector<HTMLDivElement>('.menu-item__center')!
-  centerDom.title = `居中对齐(${isApple ? '⌘' : 'Ctrl'}+E)`
+  centerDom.title = `Căn giữa (${isApple ? '⌘' : 'Ctrl'}+E)`
   centerDom.onclick = function () {
     console.log('center')
     instance.command.executeRowFlex(RowFlex.CENTER)
   }
 
   const rightDom = document.querySelector<HTMLDivElement>('.menu-item__right')!
-  rightDom.title = `右对齐(${isApple ? '⌘' : 'Ctrl'}+R)`
+  rightDom.title = `Căn phải (${isApple ? '⌘' : 'Ctrl'}+R)`
   rightDom.onclick = function () {
     console.log('right')
     instance.command.executeRowFlex(RowFlex.RIGHT)
@@ -310,7 +311,7 @@ window.onload = function () {
   const alignmentDom = document.querySelector<HTMLDivElement>(
     '.menu-item__alignment'
   )!
-  alignmentDom.title = `两端对齐(${isApple ? '⌘' : 'Ctrl'}+J)`
+  alignmentDom.title = `Căn đều hai bên (${isApple ? '⌘' : 'Ctrl'}+J)`
   alignmentDom.onclick = function () {
     console.log('alignment')
     instance.command.executeRowFlex(RowFlex.ALIGNMENT)
@@ -319,7 +320,7 @@ window.onload = function () {
   const justifyDom = document.querySelector<HTMLDivElement>(
     '.menu-item__justify'
   )!
-  justifyDom.title = `分散对齐(${isApple ? '⌘' : 'Ctrl'}+Shift+J)`
+  justifyDom.title = `Căn giãn đều (${isApple ? '⌘' : 'Ctrl'}+Shift+J)`
   justifyDom.onclick = function () {
     console.log('justify')
     instance.command.executeRowFlex(RowFlex.JUSTIFY)
@@ -339,7 +340,7 @@ window.onload = function () {
   }
 
   const listDom = document.querySelector<HTMLDivElement>('.menu-item__list')!
-  listDom.title = `列表(${isApple ? '⌘' : 'Ctrl'}+Shift+U)`
+  listDom.title = `Danh sách(${isApple ? '⌘' : 'Ctrl'}+Shift+U)`
   const listOptionDom = listDom.querySelector<HTMLDivElement>('.options')!
   listDom.onclick = function () {
     console.log('list')
@@ -352,7 +353,7 @@ window.onload = function () {
     instance.command.executeList(listType, listStyle)
   }
 
-  // 4. | 表格 | 图片 | 超链接 | 分割线 | 水印 | 代码块 | 分隔符 | 控件 | 复选框 | LaTeX | 日期选择器
+  // 4. | Bảng | Hình ảnh | Siêu liên kết | Đường phân chia | Hình mờ | Khối mã | Dấu phân cách | Điều khiển | Checkbox | LaTeX | Bộ chọn ngày
   const tableDom = document.querySelector<HTMLDivElement>('.menu-item__table')!
   const tablePanelContainer = document.querySelector<HTMLDivElement>(
     '.menu-item__table__collapse'
@@ -360,7 +361,7 @@ window.onload = function () {
   const tableClose = document.querySelector<HTMLDivElement>('.table-close')!
   const tableTitle = document.querySelector<HTMLDivElement>('.table-select')!
   const tablePanel = document.querySelector<HTMLDivElement>('.table-panel')!
-  // 绘制行列
+  // Vẽ các hàng và cột
   const tableCellList: HTMLDivElement[][] = []
   for (let i = 0; i < 10; i++) {
     const tr = document.createElement('tr')
@@ -377,24 +378,24 @@ window.onload = function () {
   }
   let colIndex = 0
   let rowIndex = 0
-  // 移除所有格选择
+  // Xóa tất cả lựa chọn ô
   function removeAllTableCellSelect() {
     tableCellList.forEach(tr => {
       tr.forEach(td => td.classList.remove('active'))
     })
   }
-  // 设置标题内容
+  // Thiết lập nội dung tiêu đề
   function setTableTitle(payload: string) {
     tableTitle.innerText = payload
   }
-  // 恢复初始状态
+  // Khôi phục trạng thái ban đầu
   function recoveryTable() {
-    // 还原选择样式、标题、选择行列
+    // Khôi phục kiểu chọn, tiêu đề, số hàng cột đã chọn
     removeAllTableCellSelect()
-    setTableTitle('插入')
+    setTableTitle('Chèn')
     colIndex = 0
     rowIndex = 0
-    // 隐藏panel
+    // Ẩn panel
     tablePanelContainer.style.display = 'none'
   }
   tableDom.onclick = function () {
@@ -406,11 +407,11 @@ window.onload = function () {
     const rowMarginTop = 10
     const celMarginRight = 6
     const { offsetX, offsetY } = evt
-    // 移除所有选择
+    // Xóa tất cả lựa chọn
     removeAllTableCellSelect()
     colIndex = Math.ceil(offsetX / (celSize + celMarginRight)) || 1
     rowIndex = Math.ceil(offsetY / (celSize + rowMarginTop)) || 1
-    // 改变选择样式
+    // Thay đổi kiểu chọn
     tableCellList.forEach((tr, trIndex) => {
       tr.forEach((td, tdIndex) => {
         if (tdIndex < colIndex && trIndex < rowIndex) {
@@ -418,14 +419,14 @@ window.onload = function () {
         }
       })
     })
-    // 改变表格标题
+    // Thay đổi tiêu đề bảng
     setTableTitle(`${rowIndex}×${colIndex}`)
   }
   tableClose.onclick = function () {
     recoveryTable()
   }
   tablePanel.onclick = function () {
-    // 应用选择
+    // Áp dụng lựa chọn
     instance.command.executeInsertTable(rowIndex, colIndex)
     recoveryTable()
   }
@@ -440,7 +441,7 @@ window.onload = function () {
     const fileReader = new FileReader()
     fileReader.readAsDataURL(file)
     fileReader.onload = function () {
-      // 计算宽高
+      // Tính chiều rộng và chiều cao
       const image = new Image()
       const value = fileReader.result as string
       image.src = value
@@ -461,22 +462,22 @@ window.onload = function () {
   hyperlinkDom.onclick = function () {
     console.log('hyperlink')
     new Dialog({
-      title: '超链接',
+      title: 'Liên kết',
       data: [
         {
           type: 'text',
-          label: '文本',
+          label: 'Văn bản',
           name: 'name',
           required: true,
-          placeholder: '请输入文本',
+          placeholder: 'Nhập văn bản hiển thị',
           value: instance.command.getRangeText()
         },
         {
           type: 'text',
-          label: '链接',
+          label: 'Đường dẫn URL',
           name: 'url',
           required: true,
-          placeholder: '请输入链接'
+          placeholder: 'Nhập địa chỉ URL'
         }
       ],
       onConfirm: payload => {
@@ -540,63 +541,63 @@ window.onload = function () {
     watermarkOptionDom.classList.toggle('visible')
     if (menu === 'add') {
       new Dialog({
-        title: '水印',
+        title: 'Thêm hình mờ (Watermark)',
         data: [
           {
             type: 'text',
-            label: '内容',
+            label: 'Nội dung',
             name: 'data',
             required: true,
-            placeholder: '请输入内容'
+            placeholder: 'Nhập nội dung hình mờ'
           },
           {
             type: 'color',
-            label: '颜色',
+            label: 'Màu sắc',
             name: 'color',
             required: true,
             value: '#AEB5C0'
           },
           {
             type: 'number',
-            label: '字体大小',
+            label: 'Cỡ chữ',
             name: 'size',
             required: true,
             value: '120'
           },
           {
             type: 'number',
-            label: '透明度',
+            label: 'Độ trong suốt',
             name: 'opacity',
             required: true,
             value: '0.3'
           },
           {
             type: 'select',
-            label: '重复',
+            label: 'Lặp lại',
             name: 'repeat',
             value: '0',
             required: false,
             options: [
               {
-                label: '不重复',
+                label: 'Không lặp',
                 value: '0'
               },
               {
-                label: '重复',
+                label: 'Có lặp lại',
                 value: '1'
               }
             ]
           },
           {
             type: 'number',
-            label: '水平间隔',
+            label: 'Khoảng cách ngang',
             name: 'horizontalGap',
             required: false,
             value: '10'
           },
           {
             type: 'number',
-            label: '垂直间隔',
+            label: 'Khoảng cách dọc',
             name: 'verticalGap',
             required: false,
             value: '10'
@@ -640,12 +641,12 @@ window.onload = function () {
   codeblockDom.onclick = function () {
     console.log('codeblock')
     new Dialog({
-      title: '代码块',
+      title: 'Khối mã',
       data: [
         {
           type: 'textarea',
           name: 'codeblock',
-          placeholder: '请输入代码',
+          placeholder: 'Vui lòng nhập mã',
           width: 500,
           height: 300
         }
@@ -699,20 +700,20 @@ window.onload = function () {
     switch (type) {
       case ControlType.TEXT:
         new Dialog({
-          title: '文本控件',
+          title: 'Điều khiển văn bản',
           data: [
             {
               type: 'text',
-              label: '占位符',
+              label: 'Văn bản giữ chỗ',
               name: 'placeholder',
               required: true,
-              placeholder: '请输入占位符'
+              placeholder: 'Nhập văn bản giữ chỗ'
             },
             {
               type: 'text',
-              label: '默认值',
+              label: 'Giá trị mặc định',
               name: 'value',
-              placeholder: '请输入默认值'
+              placeholder: 'Nhập giá trị mặc định'
             }
           ],
           onConfirm: payload => {
@@ -741,28 +742,28 @@ window.onload = function () {
         break
       case ControlType.SELECT:
         new Dialog({
-          title: '列举控件',
+          title: 'Điều khiển danh sách lựa chọn',
           data: [
             {
               type: 'text',
-              label: '占位符',
+              label: 'Văn bản giữ chỗ',
               name: 'placeholder',
               required: true,
-              placeholder: '请输入占位符'
+              placeholder: 'Nhập văn bản giữ chỗ'
             },
             {
               type: 'text',
-              label: '默认值',
+              label: 'Giá trị mặc định',
               name: 'code',
-              placeholder: '请输入默认值'
+              placeholder: 'Nhập giá trị mặc định'
             },
             {
               type: 'textarea',
-              label: '值集',
+              label: 'Tập danh sách lựa chọn',
               name: 'valueSets',
               required: true,
               height: 100,
-              placeholder: `请输入值集JSON，例：\n[{\n"value":"有",\n"code":"98175"\n}]`
+              placeholder: `Nhập định dạng JSON tập giá trị, Ví dụ:\n[{\n"value":"Có",\n"code":"98175"\n}]`
             }
           ],
           onConfirm: payload => {
@@ -789,21 +790,21 @@ window.onload = function () {
         break
       case ControlType.CHECKBOX:
         new Dialog({
-          title: '复选框控件',
+          title: 'Điều khiển ô chọn (Checkbox)',
           data: [
             {
               type: 'text',
-              label: '默认值',
+              label: 'Giá trị mặc định',
               name: 'code',
-              placeholder: '请输入默认值，多个值以英文逗号分割'
+              placeholder: 'Nhập giá trị mặc định, phân tách bằng dấu phẩy'
             },
             {
               type: 'textarea',
-              label: '值集',
+              label: 'Tập danh sách lựa chọn',
               name: 'valueSets',
               required: true,
               height: 100,
-              placeholder: `请输入值集JSON，例：\n[{\n"value":"有",\n"code":"98175"\n}]`
+              placeholder: `Nhập định dạng JSON tập giá trị, Ví dụ:\n[{\n"value":"Có",\n"code":"98175"\n}]`
             }
           ],
           onConfirm: payload => {
@@ -825,21 +826,21 @@ window.onload = function () {
         break
       case ControlType.RADIO:
         new Dialog({
-          title: '单选框控件',
+          title: 'Điều khiển nút chọn duy nhất (Radio)',
           data: [
             {
               type: 'text',
-              label: '默认值',
+              label: 'Giá trị mặc định',
               name: 'code',
-              placeholder: '请输入默认值'
+              placeholder: 'Nhập giá trị mặc định'
             },
             {
               type: 'textarea',
-              label: '值集',
+              label: 'Tập danh sách lựa chọn',
               name: 'valueSets',
               required: true,
               height: 100,
-              placeholder: `请输入值集JSON，例：\n[{\n"value":"有",\n"code":"98175"\n}]`
+              placeholder: `Nhập định dạng JSON tập giá trị, Ví dụ:\n[{\n"value":"Có",\n"code":"98175"\n}]`
             }
           ],
           onConfirm: payload => {
@@ -861,24 +862,24 @@ window.onload = function () {
         break
       case ControlType.DATE:
         new Dialog({
-          title: '日期控件',
+          title: 'Điều khiển ngày tháng',
           data: [
             {
               type: 'text',
-              label: '占位符',
+              label: 'Văn bản giữ chỗ',
               name: 'placeholder',
               required: true,
-              placeholder: '请输入占位符'
+              placeholder: 'Nhập văn bản giữ chỗ'
             },
             {
               type: 'text',
-              label: '默认值',
+              label: 'Giá trị mặc định',
               name: 'value',
-              placeholder: '请输入默认值'
+              placeholder: 'Nhập giá trị mặc định'
             },
             {
               type: 'select',
-              label: '日期格式',
+              label: 'Định dạng ngày',
               name: 'dateFormat',
               value: 'yyyy-MM-dd hh:mm:ss',
               required: true,
@@ -923,20 +924,20 @@ window.onload = function () {
         break
       case ControlType.NUMBER:
         new Dialog({
-          title: '数值控件',
+          title: 'Điều khiển số',
           data: [
             {
               type: 'text',
-              label: '占位符',
+              label: 'Văn bản giữ chỗ',
               name: 'placeholder',
               required: true,
-              placeholder: '请输入占位符'
+              placeholder: 'Vui lòng nhập văn bản giữ chỗ'
             },
             {
               type: 'text',
-              label: '默认值',
+              label: 'Giá trị mặc định',
               name: 'value',
-              placeholder: '请输入默认值'
+              placeholder: 'Vui lòng nhập giá trị mặc định'
             }
           ],
           onConfirm: payload => {
@@ -1008,7 +1009,7 @@ window.onload = function () {
           type: 'textarea',
           height: 100,
           name: 'value',
-          placeholder: '请输入LaTeX文本'
+          placeholder: 'Vui lòng nhập văn bản LaTeX'
         }
       ],
       onConfirm: payload => {
@@ -1029,7 +1030,7 @@ window.onload = function () {
   dateDom.onclick = function () {
     console.log('date')
     dateDomOptionDom.classList.toggle('visible')
-    // 定位调整
+    // Điều chỉnh vị trí
     const bodyRect = document.body.getBoundingClientRect()
     const dateDomOptionRect = dateDomOptionDom.getBoundingClientRect()
     if (dateDomOptionRect.left + dateDomOptionRect.width > bodyRect.width) {
@@ -1039,7 +1040,7 @@ window.onload = function () {
       dateDomOptionDom.style.right = 'unset'
       dateDomOptionDom.style.left = '0px'
     }
-    // 当前日期
+    // Ngày hiện tại
     const date = new Date()
     const year = date.getFullYear().toString()
     const month = (date.getMonth() + 1).toString().padStart(2, '0')
@@ -1076,44 +1077,44 @@ window.onload = function () {
   blockDom.onclick = function () {
     console.log('block')
     new Dialog({
-      title: '内容块',
+      title: 'Khối nội dung',
       data: [
         {
           type: 'select',
-          label: '类型',
+          label: 'Loại',
           name: 'type',
           value: 'iframe',
           required: true,
           options: [
             {
-              label: '网址',
+              label: 'Trang web',
               value: 'iframe'
             },
             {
-              label: '视频',
+              label: 'Video',
               value: 'video'
             }
           ]
         },
         {
           type: 'number',
-          label: '宽度',
+          label: 'Chiều rộng',
           name: 'width',
-          placeholder: '请输入宽度（默认页面内宽度）'
+          placeholder: 'Vui lòng nhập chiều rộng (mặc định bằng chiều rộng trang)'
         },
         {
           type: 'number',
-          label: '高度',
+          label: 'Chiều cao',
           name: 'height',
           required: true,
-          placeholder: '请输入高度'
+          placeholder: 'Vui lòng nhập chiều cao'
         },
         {
           type: 'input',
-          label: '地址',
+          label: 'Địa chỉ',
           name: 'src',
           required: false,
-          placeholder: '请输入地址'
+          placeholder: 'Vui lòng nhập địa chỉ'
         },
         {
           type: 'textarea',
@@ -1121,7 +1122,7 @@ window.onload = function () {
           height: 100,
           name: 'srcdoc',
           required: false,
-          placeholder: '请输入HTML代码（仅网址类型有效）'
+          placeholder: 'Vui lòng nhập mã HTML (chỉ áp dụng cho loại Trang web)'
         }
       ],
       onConfirm: payload => {
@@ -1130,7 +1131,7 @@ window.onload = function () {
         const width = payload.find(p => p.name === 'width')?.value
         const height = payload.find(p => p.name === 'height')?.value
         if (!height) return
-        // 地址或HTML代码至少存在一项
+        // Địa chỉ hoặc mã HTML phải có ít nhất một trong hai
         const src = payload.find(p => p.name === 'src')?.value
         const srcdoc = payload.find(p => p.name === 'srcdoc')?.value
         const block: IBlock = {
@@ -1162,7 +1163,7 @@ window.onload = function () {
     })
   }
 
-  // 5. | 搜索&替换 | 打印 |
+  // 5. | Tìm kiếm & thay thế | In |
   const searchCollapseDom = document.querySelector<HTMLDivElement>(
     '.menu-item__search__collapse'
   )!
@@ -1180,7 +1181,7 @@ window.onload = function () {
     document.querySelector<HTMLInputElement>('#option-selection')!
   const searchDom =
     document.querySelector<HTMLDivElement>('.menu-item__search')!
-  searchDom.title = `搜索与替换(${isApple ? '⌘' : 'Ctrl'}+F)`
+  searchDom.title = `Tìm kiếm & thay thế(${isApple ? '⌘' : 'Ctrl'}+F)`
   const searchResultDom =
     searchCollapseDom.querySelector<HTMLLabelElement>('.search-result')!
   function setSearchResult() {
@@ -1253,19 +1254,19 @@ window.onload = function () {
     }
 
   const printDom = document.querySelector<HTMLDivElement>('.menu-item__print')!
-  printDom.title = `打印(${isApple ? '⌘' : 'Ctrl'}+P)`
+  printDom.title = `In(${isApple ? '⌘' : 'Ctrl'}+P)`
   printDom.onclick = function () {
     console.log('print')
     instance.command.executePrint()
   }
 
-  // 6. 目录显隐 | 页面模式 | 纸张缩放 | 纸张大小 | 纸张方向 | 页边距 | 全屏 | 设置
+  // 6. Hiện/ẩn mục lục | Chế độ trang | Thu phóng giấy | Kích thước giấy | Hướng giấy | Lề trang | Toàn màn hình | Cài đặt
   const editorOptionDom =
     document.querySelector<HTMLDivElement>('.editor-option')!
   editorOptionDom.onclick = function () {
     const options = instance.command.getOptions()
     new Dialog({
-      title: '编辑器配置',
+      title: 'Cấu hình trình soạn thảo',
       data: [
         {
           type: 'textarea',
@@ -1274,7 +1275,7 @@ window.onload = function () {
           height: 300,
           required: true,
           value: JSON.stringify(options, null, 2),
-          placeholder: '请输入编辑器配置'
+          placeholder: 'Vui lòng nhập cấu hình trình soạn thảo'
         }
       ],
       onConfirm: payload => {
@@ -1300,13 +1301,13 @@ window.onload = function () {
           const catalogItem = catalogItems[c]
           const catalogItemDom = document.createElement('div')
           catalogItemDom.classList.add('catalog-item')
-          // 渲染
+          // Hiển thị
           const catalogItemContentDom = document.createElement('div')
           catalogItemContentDom.classList.add('catalog-item__content')
           const catalogItemContentSpanDom = document.createElement('span')
           catalogItemContentSpanDom.innerText = catalogItem.name
           catalogItemContentDom.append(catalogItemContentSpanDom)
-          // 定位
+          // Định vị
           catalogItemContentDom.onclick = () => {
             instance.command.executeLocationCatalog(catalogItem.id)
           }
@@ -1314,7 +1315,7 @@ window.onload = function () {
           if (catalogItem.subCatalog && catalogItem.subCatalog.length) {
             appendCatalog(catalogItemDom, catalogItem.subCatalog)
           }
-          // 追加
+          // Thêm vào
           parent.append(catalogItemDom)
         }
       }
@@ -1369,7 +1370,7 @@ window.onload = function () {
       instance.command.executePageScaleAdd()
     }
 
-  // 纸张大小
+  // Kích thước giấy
   const paperSizeDom = document.querySelector<HTMLDivElement>('.paper-size')!
   const paperSizeDomOptionsDom =
     paperSizeDom.querySelector<HTMLDivElement>('.options')!
@@ -1381,14 +1382,14 @@ window.onload = function () {
     const paperType = li.dataset.paperSize!
     const [width, height] = paperType.split('*').map(Number)
     instance.command.executePaperSize(width, height)
-    // 纸张状态回显
+    // Hiển thị lại trạng thái giấy
     paperSizeDomOptionsDom
       .querySelectorAll('li')
       .forEach(child => child.classList.remove('active'))
     li.classList.add('active')
   }
 
-  // 纸张方向
+  // Hướng giấy
   const paperDirectionDom =
     document.querySelector<HTMLDivElement>('.paper-direction')!
   const paperDirectionDomOptionsDom =
@@ -1401,60 +1402,60 @@ window.onload = function () {
     if (li.tagName !== 'LI' || li.classList.contains('option-caption')) return
     const { paperDirection, sectionDirection } = li.dataset
     if (sectionDirection) {
-      // 指定页面方向（本节）
+      // Chỉ định hướng trang (phần này)
       instance.command.executePageDirection(
         sectionDirection === 'inherit' ? null : <PaperDirection>sectionDirection
       )
     } else if (paperDirection) {
       instance.command.executePaperDirection(<PaperDirection>paperDirection)
     }
-    // 纸张方向状态回显
+    // Hiển thị lại trạng thái hướng giấy
     paperDirectionDomOptionsDom
       .querySelectorAll('li')
       .forEach(child => child.classList.remove('active'))
     li.classList.add('active')
   }
 
-  // 页面边距
+  // Lề trang
   const paperMarginDom =
     document.querySelector<HTMLDivElement>('.paper-margin')!
   paperMarginDom.onclick = function () {
     const [topMargin, rightMargin, bottomMargin, leftMargin] =
       instance.command.getPaperMargin()
     new Dialog({
-      title: '页边距',
+      title: 'Lề trang',
       data: [
         {
           type: 'text',
-          label: '上边距',
+          label: 'Lề trên',
           name: 'top',
           required: true,
           value: `${topMargin}`,
-          placeholder: '请输入上边距'
+          placeholder: 'Vui lòng nhập lề trên'
         },
         {
           type: 'text',
-          label: '下边距',
+          label: 'Lề dưới',
           name: 'bottom',
           required: true,
           value: `${bottomMargin}`,
-          placeholder: '请输入下边距'
+          placeholder: 'Vui lòng nhập lề dưới'
         },
         {
           type: 'text',
-          label: '左边距',
+          label: 'Lề trái',
           name: 'left',
           required: true,
           value: `${leftMargin}`,
-          placeholder: '请输入左边距'
+          placeholder: 'Vui lòng nhập lề trái'
         },
         {
           type: 'text',
-          label: '右边距',
+          label: 'Lề phải',
           name: 'right',
           required: true,
           value: `${rightMargin}`,
-          placeholder: '请输入右边距'
+          placeholder: 'Vui lòng nhập lề phải'
         }
       ],
       onConfirm: payload => {
@@ -1476,7 +1477,7 @@ window.onload = function () {
     })
   }
 
-  // 分栏配置
+  // Cấu hình chia cột
   const columnConfigDom =
     document.querySelector<HTMLDivElement>('.column-config')!
   columnConfigDom.onclick = function () {
@@ -1485,16 +1486,16 @@ window.onload = function () {
     const gap = current?.gap ?? 20
     const separator = current?.separator ? 'true' : 'false'
     new Dialog({
-      title: '分栏',
+      title: 'Chia cột',
       data: [
         {
           type: 'select',
-          label: '栏数',
+          label: 'Số cột',
           name: 'count',
           required: true,
           value: `${count}`,
           options: [
-            { value: '1', label: '1（关闭）' },
+            { value: '1', label: '1 (tắt)' },
             { value: '2', label: '2' },
             { value: '3', label: '3' },
             { value: '4', label: '4' },
@@ -1503,21 +1504,21 @@ window.onload = function () {
         },
         {
           type: 'text',
-          label: '栏间距',
+          label: 'Khoảng cách cột',
           name: 'gap',
           required: true,
           value: `${gap}`,
-          placeholder: '请输入栏间距（像素）'
+          placeholder: 'Vui lòng nhập khoảng cách cột (pixel)'
         },
         {
           type: 'select',
-          label: '分隔线',
+          label: 'Đường phân cách',
           name: 'separator',
           required: true,
           value: separator,
           options: [
-            { value: 'false', label: '不显示' },
-            { value: 'true', label: '显示' }
+            { value: 'false', label: 'Không hiển thị' },
+            { value: 'true', label: 'Hiển thị' }
           ]
         }
       ],
@@ -1537,14 +1538,14 @@ window.onload = function () {
     })
   }
 
-  // 标尺开关
+  // Công tắc thước
   const rulerToggleDom =
     document.querySelector<HTMLDivElement>('.ruler-toggle')!
   rulerToggleDom.onclick = function () {
     instance.command.executeToggleRuler()
   }
 
-  // 全屏
+  // Toàn màn hình
   const fullscreenDom = document.querySelector<HTMLDivElement>('.fullscreen')!
   fullscreenDom.onclick = toggleFullscreen
   window.addEventListener('keydown', evt => {
@@ -1565,39 +1566,39 @@ window.onload = function () {
     }
   }
 
-  // 7. 编辑器使用模式
+  // 7. Chế độ sử dụng trình soạn thảo
   const modeList = [
     {
       mode: EditorMode.EDIT,
-      name: '编辑模式'
+      name: 'Chế độ chỉnh sửa'
     },
     {
       mode: EditorMode.CLEAN,
-      name: '清洁模式'
+      name: 'Chế độ sạch'
     },
     {
       mode: EditorMode.READONLY,
-      name: '只读模式'
+      name: 'Chế độ chỉ đọc'
     },
     {
       mode: EditorMode.FORM,
-      name: '表单模式'
+      name: 'Chế độ biểu mẫu'
     },
     {
       mode: EditorMode.PRINT,
-      name: '打印模式'
+      name: 'Chế độ in'
     },
     {
       mode: EditorMode.DESIGN,
-      name: '设计模式'
+      name: 'Chế độ thiết kế'
     },
     {
       mode: EditorMode.GRAFFITI,
-      name: '涂鸦模式'
+      name: 'Chế độ vẽ tự do'
     },
     {
       mode: EditorMode.TRACE,
-      name: '留痕模式'
+      name: 'Chế độ lưu vết'
     }
   ]
   const modeElement = document.querySelector<HTMLDivElement>('.editor-mode')!
@@ -1608,7 +1609,7 @@ window.onload = function () {
     acc[item.mode] = item.name
     return acc
   }, {})
-  // 初始 active 与 .text 对齐当前模式
+  // Khởi tạo active và .text khớp với chế độ hiện tại
   const currentMode = instance.command.getOptions().mode
   modeTextElement.innerText =
     modeTextMap[currentMode] || modeTextMap[EditorMode.EDIT]
@@ -1616,7 +1617,7 @@ window.onload = function () {
     li.classList.toggle('active', li.dataset.mode === currentMode)
   })
 
-  // 留痕记录开关（仅 "留痕模式" 行可见；留痕查看模式下禁用）
+  // Công tắc ghi lưu vết (chỉ hiển thị ở dòng "Chế độ lưu vết"; bị vô hiệu trong chế độ xem lưu vết)
   const traceToggleDom = document.querySelector<HTMLInputElement>(
     '.trace-toggle__input'
   )!
@@ -1629,11 +1630,11 @@ window.onload = function () {
   const applyMode = (mode: EditorMode) => {
     modeTextElement.innerText = modeTextMap[mode]
     instance.command.executeMode(mode)
-    // 更新 active 高亮
+    // Cập nhật active và .text khớp với chế độ hiện tại
     modeOptionsElement.querySelectorAll<HTMLLIElement>('li').forEach(li => {
       li.classList.toggle('active', li.dataset.mode === mode)
     })
-    // 设置菜单栏权限视觉反馈
+    // Thiết lập phản hồi trực quan quyền thanh menu
     const isReadonly = mode === EditorMode.READONLY || mode === EditorMode.TRACE
     const enableMenuList = ['search', 'print']
     document.querySelectorAll<HTMLDivElement>('.menu-item>div').forEach(dom => {
@@ -1642,11 +1643,11 @@ window.onload = function () {
         ? dom.classList.add('disable')
         : dom.classList.remove('disable')
     })
-    // 留痕查看模式禁止切回记录态
+    // Chế độ xem lưu vết cấm chuyển về trạng thái ghi
     traceToggleDom.disabled = mode === EditorMode.TRACE
   }
   modeElement.onclick = function (evt) {
-    // 点击 li 时不重复 toggle 弹窗（交由 options 处理）
+    // Khi click li không toggle popup lặp lại (để options xử lý)
     if ((evt.target as HTMLElement).tagName === 'LI') return
     modeOptionsElement.classList.toggle('visible')
   }
@@ -1661,7 +1662,7 @@ window.onload = function () {
     modeOptionsElement.classList.remove('visible')
   }
 
-  // 模拟批注
+  // Mô phỏng bình luận
   const commentDom = document.querySelector<HTMLDivElement>('.comment')!
   async function updateComment() {
     const groupIds = await instance.command.getGroupIds()
@@ -1669,9 +1670,9 @@ window.onload = function () {
       const activeCommentDom = commentDom.querySelector<HTMLDivElement>(
         `.comment-item[data-id='${comment.id}']`
       )
-      // 编辑器是否存在对应成组id
+      // Trình soạn thảo có tồn tại group id tương ứng không
       if (groupIds.includes(comment.id)) {
-        // 当前dom是否存在-不存在则追加
+        // Dom hiện tại có tồn tại không - không tồn tại thì thêm mới
         if (!activeCommentDom) {
           const commentItem = document.createElement('div')
           commentItem.classList.add('comment-item')
@@ -1680,7 +1681,7 @@ window.onload = function () {
             instance.command.executeLocationGroup(comment.id)
           }
           commentDom.append(commentItem)
-          // 选区信息
+          // Thông tin vùng chọn
           const commentItemTitle = document.createElement('div')
           commentItemTitle.classList.add('comment-item__title')
           commentItemTitle.append(document.createElement('span'))
@@ -1693,7 +1694,7 @@ window.onload = function () {
           }
           commentItemTitle.append(closeDom)
           commentItem.append(commentItemTitle)
-          // 基础信息
+          // Thông tin cơ bản
           const commentItemInfo = document.createElement('div')
           commentItemInfo.classList.add('comment-item__info')
           const commentItemInfoName = document.createElement('span')
@@ -1703,7 +1704,7 @@ window.onload = function () {
           commentItemInfo.append(commentItemInfoName)
           commentItemInfo.append(commentItemInfoDate)
           commentItem.append(commentItemInfo)
-          // 详细评论
+          // Bình luận chi tiết
           const commentItemContent = document.createElement('div')
           commentItemContent.classList.add('comment-item__content')
           commentItemContent.innerText = comment.content
@@ -1711,14 +1712,14 @@ window.onload = function () {
           commentDom.append(commentItem)
         }
       } else {
-        // 编辑器内不存在对应成组id则dom则移除
+        // Nếu editor không tồn tại group id tương ứng thì xóa dom
         activeCommentDom?.remove()
       }
     }
   }
-  // 8. 内部事件监听
+  // 8. Lắng nghe sự kiện nội bộ
   instance.listener.rangeStyleChange = function (payload) {
-    // 控件类型
+    // Loại điều khiển
     payload.type === ElementType.SUBSCRIPT
       ? subscriptDom.classList.add('active')
       : subscriptDom.classList.remove('active')
@@ -1741,7 +1742,7 @@ window.onload = function () {
       }
     }
 
-    // 富文本
+    // Văn bản đa dạng
     fontOptionDom
       .querySelectorAll<HTMLLIElement>('li')
       .forEach(li => li.classList.remove('active'))
@@ -1796,7 +1797,7 @@ window.onload = function () {
       highlightSpanDom.style.backgroundColor = '#ffff00'
     }
 
-    // 行布局
+    // Bố cục dòng
     leftDom.classList.remove('active')
     centerDom.classList.remove('active')
     rightDom.classList.remove('active')
@@ -1814,7 +1815,7 @@ window.onload = function () {
       leftDom.classList.add('active')
     }
 
-    // 行间距
+    // Khoảng cách dòng
     rowOptionDom
       .querySelectorAll<HTMLLIElement>('li')
       .forEach(li => li.classList.remove('active'))
@@ -1823,7 +1824,7 @@ window.onload = function () {
     )!
     curRowMarginDom.classList.add('active')
 
-    // 功能
+    // Chức năng
     payload.undo
       ? undoDom.classList.remove('no-allow')
       : undoDom.classList.add('no-allow')
@@ -1834,7 +1835,7 @@ window.onload = function () {
       ? painterDom.classList.add('active')
       : painterDom.classList.remove('active')
 
-    // 标题
+    // Tiêu đề
     titleOptionDom
       .querySelectorAll<HTMLLIElement>('li')
       .forEach(li => li.classList.remove('active'))
@@ -1845,11 +1846,11 @@ window.onload = function () {
       titleSelectDom.innerText = curTitleDom.innerText
       curTitleDom.classList.add('active')
     } else {
-      titleSelectDom.innerText = '正文'
+      titleSelectDom.innerText = 'Nội dung chính'
       titleOptionDom.querySelector('li:first-child')!.classList.add('active')
     }
 
-    // 列表
+    // Danh sách
     listOptionDom
       .querySelectorAll<HTMLLIElement>('li')
       .forEach(li => li.classList.remove('active'))
@@ -1868,7 +1869,7 @@ window.onload = function () {
       listDom.classList.remove('active')
     }
 
-    // 批注
+    // Bình luận
     commentDom
       .querySelectorAll<HTMLDivElement>('.comment-item')
       .forEach(commentItemDom => {
@@ -1885,7 +1886,7 @@ window.onload = function () {
       }
     }
 
-    // 行列信息
+    // Thông tin hàng cột
     const rangeContext = instance.command.getRangeContext()
     if (rangeContext) {
       document.querySelector<HTMLSpanElement>('.row-no')!.innerText = `${
@@ -1898,7 +1899,7 @@ window.onload = function () {
   }
 
   instance.listener.visiblePageNoListChange = function (payload) {
-    const text = payload.map(i => i + 1).join('、')
+    const text = payload.map(i => i + 1).join(', ')
     document.querySelector<HTMLSpanElement>('.page-no-list')!.innerText = text
   }
 
@@ -1927,7 +1928,7 @@ window.onload = function () {
       'page-break',
       'control'
     ]
-    // 菜单操作权限
+    // Quyền thao tác menu
     disableMenusInControlContext.forEach(menu => {
       const menuDom = document.querySelector<HTMLDivElement>(
         `.menu-item__${menu}`
@@ -1949,18 +1950,18 @@ window.onload = function () {
   }
 
   const handleContentChange = async function () {
-    // 字数
+    // Số chữ
     const wordCount = await instance.command.getWordCount()
     document.querySelector<HTMLSpanElement>('.word-count')!.innerText = `${
       wordCount || 0
     }`
-    // 目录
+    // Mục lục
     if (isCatalogShow) {
       nextTick(() => {
         updateCatalog()
       })
     }
-    // 批注
+    // Bình luận
     nextTick(() => {
       updateComment()
     })
@@ -1972,8 +1973,8 @@ window.onload = function () {
     console.log('elementList: ', payload)
   }
 
-  // 9. 右键菜单注册
-  // 宏：从 localStorage 恢复已保存的宏
+  // 9. Đăng ký menu chuột phải
+  // Macro: khôi phục macro đã lưu từ localStorage
   const MACRO_STORAGE_KEY = 'canvas-editor:macros'
   const saved = localStorage.getItem(MACRO_STORAGE_KEY)
   if (saved) {
@@ -1981,7 +1982,7 @@ window.onload = function () {
   }
   instance.register.contextMenuList([
     {
-      name: '批注',
+      name: 'Bình luận',
       when: payload => {
         return (
           !payload.isReadonly &&
@@ -1991,15 +1992,15 @@ window.onload = function () {
       },
       callback: (command: Command) => {
         new Dialog({
-          title: '批注',
+          title: 'Bình luận',
           data: [
             {
               type: 'textarea',
-              label: '批注',
+              label: 'Bình luận',
               height: 100,
               name: 'value',
               required: true,
-              placeholder: '请输入批注'
+              placeholder: 'Vui lòng nhập bình luận'
             }
           ],
           onConfirm: payload => {
@@ -2019,7 +2020,7 @@ window.onload = function () {
       }
     },
     {
-      name: '新增题注',
+      name: 'Thêm chú thích',
       icon: 'caption',
       when: payload => {
         return (
@@ -2030,14 +2031,14 @@ window.onload = function () {
       },
       callback: (command: Command) => {
         new Dialog({
-          title: '新增题注',
+          title: 'Thêm chú thích',
           data: [
             {
               type: 'text',
-              label: '题注内容',
+              label: 'Nội dung chú thích',
               name: 'value',
               required: true,
-              placeholder: '请输入题注内容，使用{imageNo}表示图片序号'
+              placeholder: 'Vui lòng nhập nội dung chú thích, dùng {imageNo} cho số thứ tự hình ảnh'
             }
           ],
           onConfirm: payload => {
@@ -2051,7 +2052,7 @@ window.onload = function () {
       }
     },
     {
-      name: '修改题注',
+      name: 'Sửa chú thích',
       icon: 'caption',
       when: payload => {
         return (
@@ -2063,15 +2064,15 @@ window.onload = function () {
       callback: (command: Command, context) => {
         const currentCaption = context.startElement?.imgCaption
         new Dialog({
-          title: '修改题注',
+          title: 'Sửa chú thích',
           data: [
             {
               type: 'text',
-              label: '题注内容',
+              label: 'Nội dung chú thích',
               name: 'value',
               required: true,
               value: currentCaption?.value,
-              placeholder: '请输入题注内容，使用{imageNo}表示图片序号'
+              placeholder: 'Vui lòng nhập nội dung chú thích, dùng {imageNo} cho số thứ tự hình ảnh'
             }
           ],
           onConfirm: payload => {
@@ -2085,7 +2086,7 @@ window.onload = function () {
       }
     },
     {
-      name: '签名',
+      name: 'Chữ ký',
       icon: 'signature',
       when: payload => {
         return !payload.isReadonly && payload.editorTextFocus
@@ -2109,7 +2110,7 @@ window.onload = function () {
       }
     },
     {
-      name: '格式整理',
+      name: 'Định dạng chuẩn',
       icon: 'word-tool',
       when: payload => {
         return !payload.isReadonly
@@ -2119,7 +2120,7 @@ window.onload = function () {
       }
     },
     {
-      name: '清空涂鸦信息',
+      name: 'Xóa nét vẽ tự do',
       when: payload => {
         return payload.options.mode === EditorMode.GRAFFITI
       },
@@ -2128,11 +2129,11 @@ window.onload = function () {
       }
     },
     {
-      name: '宏',
+      name: 'Macro',
       when: payload => !payload.isReadonly,
       childMenus: [
         {
-          name: '录制宏',
+          name: 'Ghi Macro',
           icon: 'record',
           when: () => !instance.macro.isRecording(),
           callback: () => {
@@ -2140,19 +2141,19 @@ window.onload = function () {
           }
         },
         {
-          name: '停止录制宏',
+          name: 'Dừng ghi Macro',
           icon: 'stop',
           when: () => instance.macro.isRecording(),
           callback: () => {
             new Dialog({
-              title: '保存宏',
+              title: 'Lưu Macro',
               data: [
                 {
                   type: 'text',
-                  label: '宏名称',
+                  label: 'Tên Macro',
                   name: 'name',
                   required: true,
-                  placeholder: '请输入宏名称'
+                  placeholder: 'Nhập tên Macro'
                 }
               ],
               onConfirm: payload => {
@@ -2172,18 +2173,18 @@ window.onload = function () {
           }
         },
         {
-          name: '回放宏',
+          name: 'Phát lại Macro',
           when: () =>
             !instance.macro.isRecording() &&
             instance.macro.getMacros().length > 0,
           callback: () => {
             const macros = instance.macro.getMacros()
             new Dialog({
-              title: '回放宏',
+              title: 'Phát lại Macro',
               data: [
                 {
                   type: 'select',
-                  label: '选择宏',
+                  label: 'Chọn Macro',
                   name: 'macroId',
                   required: true,
                   options: macros.map(m => ({
@@ -2201,18 +2202,18 @@ window.onload = function () {
           }
         },
         {
-          name: '管理宏',
+          name: 'Quản lý Macro',
           when: () =>
             !instance.macro.isRecording() &&
             instance.macro.getMacros().length > 0,
           callback: () => {
             const macros = instance.macro.getMacros()
             new Dialog({
-              title: '管理宏',
+              title: 'Quản lý Macro',
               data: [
                 {
                   type: 'select',
-                  label: '选择要删除的宏',
+                  label: 'Chọn Macro cần xóa',
                   name: 'macroId',
                   options: macros.map(m => ({
                     label: `${m.name} (${m.type})`,
@@ -2237,7 +2238,7 @@ window.onload = function () {
     }
   ])
 
-  // 10. 快捷键注册
+  // 10. Đăng ký phím tắt
   instance.register.shortcutList([
     {
       key: KeyMap.P,

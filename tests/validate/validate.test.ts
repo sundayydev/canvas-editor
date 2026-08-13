@@ -30,7 +30,7 @@ describe('executeValidate', () => {
     expect(result).toHaveLength(1)
     expect(result[0].controlId).toBe('c1')
     expect(result[0].control.preText).toBe('姓名')
-    expect(result[0].errors[0]).toContain('必填')
+    expect(result[0].errors[0]).toContain('bắt buộc')
     ctx.editor.command.executeClearValidate()
   })
 
@@ -147,6 +147,7 @@ describe('executeValidate', () => {
       })
     ]
     ctx = createTestEditor({ data: { header: [], main: data, footer: [] } })
+    ctx.editor.command.executeSetLocale('zhCN')
     ctx.editor.register.langMap('zhCN', {
       validate: {
         required: 'CUSTOM_REQUIRED',

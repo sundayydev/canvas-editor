@@ -145,17 +145,51 @@ window.onload = function () {
     instance.command.executeFont(li.dataset.family!)
   }
 
+  let lastActiveSize = 16
   const sizeSetDom = document.querySelector<HTMLDivElement>('.menu-item__size')!
-  const sizeSelectDom = sizeSetDom.querySelector<HTMLDivElement>('.select')!
+  const sizeSelectDom = sizeSetDom.querySelector<HTMLInputElement>('.select')!
   const sizeOptionDom = sizeSetDom.querySelector<HTMLDivElement>('.options')!
   sizeSetDom.title = `Cài đặt cỡ chữ`
-  sizeSetDom.onclick = function () {
+  sizeSetDom.onclick = function (evt) {
     console.log('size')
-    sizeOptionDom.classList.toggle('visible')
+    const target = evt.target as HTMLElement
+    if (target.tagName === 'INPUT') {
+      const rect = target.getBoundingClientRect()
+      const isArrowClick = evt.clientX > rect.right - 15
+      if (isArrowClick) {
+        sizeOptionDom.classList.toggle('visible')
+      } else {
+        sizeOptionDom.classList.add('visible')
+      }
+    } else {
+      sizeOptionDom.classList.toggle('visible')
+    }
   }
   sizeOptionDom.onclick = function (evt) {
     const li = evt.target as HTMLLIElement
-    instance.command.executeSize(Number(li.dataset.size!))
+    if (li.dataset.size) {
+      instance.command.executeSize(Number(li.dataset.size))
+    }
+  }
+  sizeSelectDom.onkeydown = function (evt) {
+    if (evt.key === 'Enter') {
+      const val = Number(sizeSelectDom.value)
+      if (!isNaN(val) && val >= 5 && val <= 72) {
+        instance.command.executeSize(val)
+      } else {
+        sizeSelectDom.value = String(lastActiveSize)
+      }
+      sizeSelectDom.blur()
+      sizeOptionDom.classList.remove('visible')
+    }
+  }
+  sizeSelectDom.onblur = function () {
+    const val = Number(sizeSelectDom.value)
+    if (!isNaN(val) && val >= 5 && val <= 72) {
+      instance.command.executeSize(val)
+    } else {
+      sizeSelectDom.value = String(lastActiveSize)
+    }
   }
 
   const sizeAddDom = document.querySelector<HTMLDivElement>(
@@ -1760,11 +1794,10 @@ window.onload = function () {
     const curSizeDom = sizeOptionDom.querySelector<HTMLLIElement>(
       `[data-size='${payload.size}']`
     )
+    lastActiveSize = payload.size
+    sizeSelectDom.value = String(payload.size)
     if (curSizeDom) {
-      sizeSelectDom.innerText = curSizeDom.innerText
       curSizeDom.classList.add('active')
-    } else {
-      sizeSelectDom.innerText = `${payload.size}`
     }
     payload.bold
       ? boldDom.classList.add('active')

@@ -1,6 +1,7 @@
 import { ILang } from '../../interface/i18n/I18n'
 import zhCN from './lang/zh-CN.json'
 import en from './lang/en.json'
+import vi from './lang/vi.json'
 import { mergeObject } from '../../utils'
 import { DeepPartial } from '../../interface/Common'
 
@@ -9,7 +10,9 @@ export class I18n {
 
   private langMap: Map<string, ILang> = new Map([
     ['zhCN', zhCN],
-    ['en', en]
+    ['en', en],
+    ['vi', vi],
+    ['viVN', vi]
   ])
 
   constructor(locale: string) {
@@ -18,7 +21,7 @@ export class I18n {
 
   public registerLangMap(locale: string, lang: DeepPartial<ILang>) {
     const sourceLang = this.langMap.get(locale)
-    this.langMap.set(locale, <ILang>mergeObject(sourceLang || zhCN, lang))
+    this.langMap.set(locale, <ILang>mergeObject(sourceLang || vi, lang))
   }
 
   public getLocale(): string {
@@ -30,7 +33,7 @@ export class I18n {
   }
 
   public getLang(): ILang {
-    return this.langMap.get(this.currentLocale) || zhCN
+    return this.langMap.get(this.currentLocale) || vi
   }
 
   public t(path: string): string {
